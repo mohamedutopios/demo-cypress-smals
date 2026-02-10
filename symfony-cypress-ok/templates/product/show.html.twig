@@ -1,0 +1,115 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ product.name }} - Symfony Cypress Demo{% endblock %}
+
+{% block body %}
+<nav aria-label="breadcrumb" class="mb-4">
+    <ol class="breadcrumb" data-cy="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path('app_home') }}">Accueil</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('app_product_index') }}">Produits</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ product.name }}</li>
+    </ol>
+</nav>
+
+<div class="row" data-cy="product-detail">
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h2 class="mb-0" data-cy="product-name">{{ product.name }}</h2>
+                {% if product.category %}
+                    <span class="badge bg-info fs-6" data-cy="product-category">{{ product.category }}</span>
+                {% endif %}
+            </div>
+            <div class="card-body">
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <h3 class="h1 text-primary" data-cy="product-price">{{ product.price|number_format(2, ',', ' ') }} €</h3>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <span class="badge {{ product.stock > 10 ? 'bg-success' : (product.stock > 0 ? 'bg-warning' : 'bg-danger') }} fs-6" data-cy="product-stock">
+                            <i class="bi bi-box-seam me-1"></i>
+                            {% if product.stock > 10 %}
+                                En stock ({{ product.stock }})
+                            {% elseif product.stock > 0 %}
+                                Stock limité ({{ product.stock }})
+                            {% else %}
+                                Rupture de stock
+                            {% endif %}
+                        </span>
+                    </div>
+                </div>
+
+                <h5>Description</h5>
+                <p class="lead" data-cy="product-description">
+                    {{ product.description|default('Aucune description disponible pour ce produit.')|nl2br }}
+                </p>
+
+                <hr>
+
+                <div class="row text-muted small">
+                    <div class="col-md-6">
+                        <i class="bi bi-calendar me-1"></i>
+                        Créé le : {{ product.createdAt|date('d/m/Y H:i') }}
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        {% if product.updatedAt %}
+                            <i class="bi bi-pencil me-1"></i>
+                            Modifié le : {{ product.updatedAt|date('d/m/Y H:i') }}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="card" data-cy="actions-card">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="bi bi-gear me-2"></i>Actions</h5>
+            </div>
+            <div class="card-body d-grid gap-2">
+                <a href="{{ path('app_product_index') }}" class="btn btn-outline-secondary" data-cy="back-btn">
+                    <i class="bi bi-arrow-left me-1"></i>Retour à la liste
+                </a>
+                
+                {% if is_granted('ROLE_USER') %}
+                    <a href="{{ path('app_product_edit', {id: product.id}) }}" class="btn btn-primary" data-cy="edit-btn">
+                        <i class="bi bi-pencil me-1"></i>Modifier
+                    </a>
+                    
+                    <form method="post" action="{{ path('app_product_delete', {id: product.id}) }}" 
+                          onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce produit ?');"
+                          data-cy="delete-form">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ product.id) }}">
+                        <button type="submit" class="btn btn-danger w-100" data-cy="delete-btn">
+                            <i class="bi bi-trash me-1"></i>Supprimer
+                        </button>
+                    </form>
+                {% else %}
+                    <div class="alert alert-info mb-0" data-cy="login-required">
+                        <small><i class="bi bi-info-circle me-1"></i>Connectez-vous pour modifier ce produit.</small>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="card mt-3">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="bi bi-info-circle me-2"></i>Informations</h5>
+            </div>
+            <ul class="list-group list-group-flush" data-cy="product-info">
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>ID</span>
+                    <strong data-cy="product-id">#{{ product.id }}</strong>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>Statut</span>
+                    <span class="badge {{ product.isActive ? 'bg-success' : 'bg-secondary' }}" data-cy="product-status">
+                        {{ product.isActive ? 'Actif' : 'Inactif' }}
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

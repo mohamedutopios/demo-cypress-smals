@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion - Symfony Cypress Demo{% endblock %}
+
+{% block body %}
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-4">
+        <div class="card shadow" data-cy="login-card">
+            <div class="card-header bg-primary text-white text-center py-3">
+                <h4 class="mb-0">
+                    <i class="bi bi-box-arrow-in-right me-2"></i>Connexion
+                </h4>
+            </div>
+            <div class="card-body p-4">
+                {% if error %}
+                    <div class="alert alert-danger" role="alert" data-cy="login-error">
+                        <i class="bi bi-exclamation-triangle me-2"></i>
+                        {{ error.messageKey|trans(error.messageData, 'security') }}
+                    </div>
+                {% endif %}
+
+                <form method="post" data-cy="login-form">
+                    <div class="mb-3">
+                        <label for="inputEmail" class="form-label">
+                            <i class="bi bi-envelope me-1"></i>Adresse email
+                        </label>
+                        <input 
+                            type="email" 
+                            id="inputEmail"
+                            name="_username" 
+                            class="form-control form-control-lg" 
+                            value="{{ last_username }}"
+                            required 
+                            autofocus
+                            placeholder="exemple@email.com"
+                            data-cy="email"
+                        >
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="inputPassword" class="form-label">
+                            <i class="bi bi-lock me-1"></i>Mot de passe
+                        </label>
+                        <input 
+                            type="password" 
+                            id="inputPassword"
+                            name="_password" 
+                            class="form-control form-control-lg" 
+                            required
+                            placeholder="••••••••"
+                            data-cy="password"
+                        >
+                    </div>
+
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="rememberMe" name="_remember_me" data-cy="remember-me">
+                        <label class="form-check-label" for="rememberMe">Se souvenir de moi</label>
+                    </div>
+
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                    <button type="submit" class="btn btn-primary btn-lg w-100" data-cy="submit">
+                        <i class="bi bi-box-arrow-in-right me-2"></i>Se connecter
+                    </button>
+                </form>
+            </div>
+            <div class="card-footer text-center py-3 bg-light">
+                <small class="text-muted" data-cy="demo-credentials">
+                    <strong>Compte démo :</strong><br>
+                    admin@example.com / password
+                </small>
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="{{ path('app_home') }}" class="text-decoration-none" data-cy="back-home">
+                <i class="bi bi-arrow-left me-1"></i>Retour à l'accueil
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}À propos - Symfony Cypress Demo{% endblock %}
+
+{% block body %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <h1 class="mb-4" data-cy="page-title">
+            <i class="bi bi-info-circle me-2"></i>À propos
+        </h1>
+
+        <div class="card mb-4" data-cy="about-card">
+            <div class="card-body">
+                <h4>Application de démonstration Cypress</h4>
+                <p class="lead">
+                    Cette application Symfony a été créée pour apprendre à écrire des tests end-to-end avec Cypress.
+                </p>
+                <p>
+                    Elle contient toutes les fonctionnalités classiques d'une application web :
+                </p>
+                <ul>
+                    <li>Authentification (login/logout)</li>
+                    <li>Gestion CRUD de produits</li>
+                    <li>Recherche et filtrage</li>
+                    <li>Messages flash</li>
+                    <li>Validation de formulaires</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card mb-4" data-cy="cypress-card">
+            <div class="card-header bg-success text-white">
+                <h5 class="mb-0"><i class="bi bi-check-circle me-2"></i>Attributs data-cy</h5>
+            </div>
+            <div class="card-body">
+                <p>
+                    Tous les éléments interactifs importants possèdent un attribut <code>data-cy</code> 
+                    pour faciliter les sélecteurs Cypress :
+                </p>
+                <div class="table-responsive">
+                    <table class="table table-striped" data-cy="selectors-table">
+                        <thead>
+                            <tr>
+                                <th>Élément</th>
+                                <th>Sélecteur</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Champ email (login)</td><td><code>[data-cy="email"]</code></td></tr>
+                            <tr><td>Champ mot de passe</td><td><code>[data-cy="password"]</code></td></tr>
+                            <tr><td>Bouton submit</td><td><code>[data-cy="submit"]</code></td></tr>
+                            <tr><td>Lien connexion</td><td><code>[data-cy="login-link"]</code></td></tr>
+                            <tr><td>Lien déconnexion</td><td><code>[data-cy="logout-link"]</code></td></tr>
+                            <tr><td>Nom du produit</td><td><code>[data-cy="product-name"]</code></td></tr>
+                            <tr><td>Prix du produit</td><td><code>[data-cy="product-price"]</code></td></tr>
+                            <tr><td>Formulaire produit</td><td><code>[data-cy="product-form"]</code></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" data-cy="credentials-card">
+            <div class="card-header bg-info text-white">
+                <h5 class="mb-0"><i class="bi bi-key me-2"></i>Identifiants de test</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>Administrateur</h6>
+                        <p class="mb-1"><strong>Email :</strong> admin@example.com</p>
+                        <p><strong>Mot de passe :</strong> password</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Utilisateur standard</h6>
+                        <p class="mb-1"><strong>Email :</strong> user@example.com</p>
+                        <p><strong>Mot de passe :</strong> password</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

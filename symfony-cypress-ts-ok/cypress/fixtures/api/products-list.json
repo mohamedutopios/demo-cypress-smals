@@ -1,0 +1,33 @@
+{
+    "products": [
+      {
+        "id": 1,
+        "name": "MacBook Pro 14 (Mock)",
+        "description": "Ordinateur portable Apple avec puce M3",
+        "price": "2499.00",
+        "stock": 15,
+        "category": "electronics",
+        "isActive": true
+      },
+      {
+        "id": 2,
+        "name": "iPhone 15 Pro (Mock)",
+        "description": "Smartphone Apple dernière génération",
+        "price": "1229.00",
+        "stock": 42,
+        "category": "electronics",
+        "isActive": true
+      },
+      {
+        "id": 3,
+        "name": "AirPods Pro 2 (Mock)",
+        "description": "Écouteurs sans fil avec réduction de bruit",
+        "price": "279.00",
+        "stock": 100,
+        "category": "electronics",
+        "isActive": true
+      }
+    ],
+    "total": 3
+  }
+  

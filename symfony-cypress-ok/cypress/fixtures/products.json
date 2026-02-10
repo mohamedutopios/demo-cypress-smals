@@ -1,0 +1,34 @@
+{
+    "valid": {
+      "name": "Produit Test Cypress",
+      "description": "Description créée automatiquement par Cypress pour les tests E2E",
+      "price": "99.99",
+      "stock": "25",
+      "category": "electronics"
+    },
+    "minimal": {
+      "name": "Produit Minimal",
+      "price": "10",
+      "stock": "1"
+    },
+    "expensive": {
+      "name": "Produit Luxe Premium",
+      "description": "Un produit très haut de gamme",
+      "price": "2499.99",
+      "stock": "5",
+      "category": "electronics"
+    },
+    "outOfStock": {
+      "name": "Produit Épuisé",
+      "description": "Ce produit n'est plus en stock",
+      "price": "49.99",
+      "stock": "0",
+      "category": "clothing"
+    },
+    "invalid": {
+      "name": "",
+      "price": "-10",
+      "stock": "-5"
+    }
+  }
+  
