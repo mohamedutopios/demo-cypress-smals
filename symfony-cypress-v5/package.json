@@ -1,0 +1,20 @@
+{
+  "name": "symfony-cypress-v5",
+  "version": "5.0.0",
+  "description": "Démo 5 — Structuration des tests Cypress (hooks, cy.session, organisation par domaine)",
+  "scripts": {
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "cy:smoke": "cypress run --spec 'cypress/e2e/smoke/**/*.cy.js'",
+    "cy:auth": "cypress run --spec 'cypress/e2e/auth/**/*.cy.js'",
+    "cy:product": "cypress run --spec 'cypress/e2e/product/**/*.cy.js'",
+    "cy:journey": "cypress run --spec 'cypress/e2e/journey/**/*.cy.js'",
+    "cy:product:create": "cypress run --spec 'cypress/e2e/product/create.cy.js'",
+    "cy:product:read": "cypress run --spec 'cypress/e2e/product/read.cy.js'",
+    "cy:product:update": "cypress run --spec 'cypress/e2e/product/update.cy.js'",
+    "cy:product:delete": "cypress run --spec 'cypress/e2e/product/delete.cy.js'"
+  },
+  "devDependencies": {
+    "cypress": "^13.0.0"
+  }
+}

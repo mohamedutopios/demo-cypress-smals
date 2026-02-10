@@ -1,0 +1,37 @@
+[
+  {
+    "name": "MacBook Pro M3",
+    "description": "Ordinateur portable Apple avec puce M3",
+    "price": 2499.99,
+    "stock": 15,
+    "category": "electronics"
+  },
+  {
+    "name": "T-Shirt Developer",
+    "description": "T-shirt 100% coton avec logo code",
+    "price": 29.99,
+    "stock": 200,
+    "category": "clothing"
+  },
+  {
+    "name": "Clean Code - Robert C. Martin",
+    "description": "Guide des bonnes pratiques de développement",
+    "price": 39.99,
+    "stock": 50,
+    "category": "books"
+  },
+  {
+    "name": "Clavier Mécanique RGB",
+    "description": "Clavier gaming switches Cherry MX",
+    "price": 149.99,
+    "stock": 30,
+    "category": "electronics"
+  },
+  {
+    "name": "Casque Audio Sans Fil",
+    "description": "Casque Bluetooth avec réduction de bruit active",
+    "price": 199.99,
+    "stock": 45,
+    "category": "electronics"
+  }
+]
